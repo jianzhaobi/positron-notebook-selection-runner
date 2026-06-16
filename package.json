@@ -2,8 +2,25 @@
   "name": "positron-notebook-selection-runner",
   "displayName": "Positron Notebook Selection Runner",
   "description": "Run selected code directly in the active Positron Notebook runtime session.",
-  "version": "0.0.7",
-  "publisher": "local",
+  "version": "0.0.8",
+  "publisher": "jianzhaobi",
+  "icon": "assets/icon.png",
+  "license": "MIT",
+  "homepage": "https://github.com/jianzhaobi/positron-notebook-selection-runner#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jianzhaobi/positron-notebook-selection-runner.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jianzhaobi/positron-notebook-selection-runner/issues"
+  },
+  "keywords": [
+    "positron",
+    "notebook",
+    "selection",
+    "runtime",
+    "run code"
+  ],
   "engines": {
     "vscode": "^1.85.0",
     "positron": "^2026.6.0"

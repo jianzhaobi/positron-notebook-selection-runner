@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Positron Notebook Selection Runner icon">
+  <rect width="128" height="128" rx="24" fill="#111827"/>
+  <rect x="31" y="24" width="62" height="80" rx="10" fill="none" stroke="#d7dee9" stroke-width="7"/>
+  <path d="M44 24v80" stroke="#d7dee9" stroke-width="7" stroke-linecap="round"/>
+  <path d="M58 48h22" stroke="#8c98a8" stroke-width="6" stroke-linecap="round"/>
+  <path d="M58 64h32" stroke="#23d3c3" stroke-width="8" stroke-linecap="round"/>
+  <path d="M58 80h20" stroke="#8c98a8" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="44" cy="48" r="4" fill="#8c98a8"/>
+  <circle cx="44" cy="80" r="4" fill="#8c98a8"/>
+  <circle cx="88" cy="74" r="23" fill="#0f766e"/>
+  <circle cx="88" cy="74" r="23" fill="none" stroke="#23d3c3" stroke-width="6"/>
+  <path d="M82 62v24l19-12z" fill="#f8fafc"/>
+</svg>

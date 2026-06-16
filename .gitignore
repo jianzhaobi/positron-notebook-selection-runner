@@ -1,5 +1,7 @@
 node_modules/
 *.vsix
+.env
+AGENTS.md
 
 .DS_Store
 *.log
