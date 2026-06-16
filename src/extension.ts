@@ -29,15 +29,38 @@ async function runSelectionInNotebookSession() {
     return;
   }
 
+  const selectedCell = notebookEditor.notebook
+    .getCells()
+    .find((cell) => urisMatch(cell.document.uri, textEditor.document.uri));
+
+  if (!selectedCell) {
+    vscode.window.showWarningMessage("Select code inside the active Positron Notebook first.");
+    return;
+  }
+
   const selectedCode = textEditor.document.getText(textEditor.selection);
   if (!selectedCode.trim()) {
     vscode.window.showWarningMessage("The current selection is empty.");
     return;
   }
 
-  const languageId = textEditor.document.languageId || "python";
-
   try {
+    const notebookSession = await positron.runtime.getNotebookSession(notebookEditor.notebook.uri);
+    if (!notebookSession) {
+      vscode.window.showWarningMessage("Start or connect to the active Positron Notebook runtime session first.");
+      return;
+    }
+
+    if (
+      notebookSession.metadata.notebookUri &&
+      !urisMatch(notebookSession.metadata.notebookUri, notebookEditor.notebook.uri)
+    ) {
+      vscode.window.showErrorMessage("Could not verify the active Positron Notebook runtime session.");
+      return;
+    }
+
+    const languageId = notebookSession.runtimeMetadata.languageId || textEditor.document.languageId || "python";
+
     await positron.runtime.executeCode(
       languageId,
       selectedCode,
@@ -46,13 +69,17 @@ async function runSelectionInNotebookSession() {
       undefined,
       undefined,
       undefined,
-      undefined,
+      notebookSession.metadata.sessionId,
       textEditor.document.uri
     );
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
     vscode.window.showErrorMessage(`Could not run selection in Positron Notebook session: ${message}`);
   }
+}
+
+function urisMatch(left: vscode.Uri, right: vscode.Uri): boolean {
+  return left.toString() === right.toString();
 }
 
 export function deactivate() {}
