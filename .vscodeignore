@@ -1,0 +1,11 @@
+node_modules/**
+src/**
+*.vsix
+
+.git/**
+.gitignore
+.vscodeignore
+.vscode-test/**
+
+*.log
+*.map

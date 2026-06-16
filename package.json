@@ -1,0 +1,63 @@
+{
+  "name": "positron-notebook-selection-runner",
+  "displayName": "Positron Notebook Selection Runner",
+  "description": "Run selected code directly in the active Positron Notebook runtime session.",
+  "version": "0.0.7",
+  "publisher": "local",
+  "engines": {
+    "vscode": "^1.85.0",
+    "positron": "^2026.6.0"
+  },
+  "categories": [
+    "Notebooks"
+  ],
+  "activationEvents": [
+    "onCommand:positronNotebookSelectionRunner.runSelectionInNotebookSession"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "positronNotebookSelectionRunner.runSelectionInNotebookSession",
+        "title": "Run Selection in Positron Notebook Session",
+        "category": "Positron Notebook Selection Runner"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "positronNotebookSelectionRunner.runSelectionInNotebookSession",
+        "key": "f9",
+        "mac": "f9",
+        "win": "f9",
+        "linux": "f9",
+        "when": "editorTextFocus && activeEditor == 'workbench.editor.positronNotebook'"
+      },
+      {
+        "command": "-editor.debug.action.toggleBreakpoint",
+        "key": "f9",
+        "mac": "f9",
+        "win": "f9",
+        "linux": "f9",
+        "when": "editorTextFocus && activeEditor == 'workbench.editor.positronNotebook'"
+      }
+    ],
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "positronNotebookSelectionRunner.runSelectionInNotebookSession",
+          "when": "activeEditor == 'workbench.editor.positronNotebook'"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "@vscode/vsce": "^2.15.0",
+    "typescript": "^5.3.3"
+  }
+}
