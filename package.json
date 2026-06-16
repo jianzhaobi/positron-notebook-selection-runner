@@ -2,7 +2,7 @@
   "name": "positron-notebook-selection-runner",
   "displayName": "Positron Notebook Selection Runner",
   "description": "Run selected code directly in the active Positron Notebook runtime session.",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "publisher": "jianzhaobi",
   "icon": "assets/icon.png",
   "license": "MIT",
