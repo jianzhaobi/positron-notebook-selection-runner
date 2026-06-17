@@ -2,11 +2,11 @@
 
 Run selected code directly in the active Positron Notebook runtime session.
 
-This extension adds one command:
+This extension adds one command for Positron Notebooks:
 
 - `Positron Notebook Selection Runner: Run Selection in Positron Notebook Session`
 
-When you select code inside a Positron Notebook cell, the command sends the selected code directly to the active Positron runtime session. It does not create, execute, or delete temporary notebook cells.
+When you select code inside a Positron Notebook cell, the command sends only that selection to the active Positron runtime session. It does not create, execute, or delete temporary notebook cells, so your notebook contents stay unchanged.
 
 This extension is scoped to the Positron Notebook editor. It is not intended for the legacy/default Jupyter notebook editor.
 
@@ -14,7 +14,8 @@ This extension is scoped to the Positron Notebook editor. It is not intended for
 
 - Runs the current editor selection in the active Positron Notebook runtime session.
 - Keeps notebook contents unchanged; no temporary cells are inserted or deleted.
-- Adds an `F9` keybinding for Positron Notebook editors on macOS, Windows, and Linux.
+- Adds an `F9` keybinding while a Positron Notebook cell editor has focus.
+- Works from the Command Palette if you prefer not to use a keyboard shortcut.
 
 ## Requirements
 
@@ -30,7 +31,35 @@ This extension is scoped to the Positron Notebook editor. It is not intended for
 
 On macOS, press `fn+F9` if your keyboard uses the function row for system controls.
 
-User keybindings in Positron override this extension's default keybinding.
+## Changing the Keybinding
+
+If `F9` conflicts with another shortcut, you can replace it with your own keybinding:
+
+1. Open the Command Palette.
+2. Run `Preferences: Open Keyboard Shortcuts`.
+3. Search for `Run Selection in Positron Notebook Session`.
+4. Select the edit icon next to the command.
+5. Press the key combination you want to use, then confirm it.
+
+Your Positron keybindings override this extension's default `F9` shortcut.
+
+If you prefer editing keybindings as JSON, use this command ID:
+
+```json
+{
+  "key": "f9",
+  "command": "positronNotebookSelectionRunner.runSelectionInNotebookSession",
+  "when": "positronNotebookCellEditorFocused"
+}
+```
+
+Replace `f9` with the shortcut you want.
+
+## Troubleshooting
+
+- If nothing runs, make sure a Positron Notebook runtime session is started or connected.
+- If the command is unavailable, make sure the active editor is a Positron Notebook, not the legacy/default Jupyter notebook editor.
+- If `F9` does not work on macOS, try `fn+F9` or assign a different keybinding.
 
 ## License
 
